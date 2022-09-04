@@ -4,7 +4,7 @@ import joblib
 import os
 
 dirname = os.path.dirname(__file__)
-filename = os.path.join(dirname, '../models/model.pkl')
+filename = os.path.join(dirname, 'models/model.pkl')
 model = joblib.load(filename)
 
 #########################
@@ -15,12 +15,13 @@ st.title('Titanic survival prediction')
 st.markdown("<description> The sinking of the Titanic is one of the most infamous shipwrecks in history. " + 
 "While there was some element of luck involved in surviving, it seems some" +
 " groups of people were more likely to survive than others. Find out if you would have sourvived. </description>", unsafe_allow_html=True)
+image = os.path.join(dirname, 'assets/RMS_Titanic_3.jpg')
+st.image(image, caption = "RMS Titanic departing Southampton on April 10, 1912. Photographer Francis Godolphin Osbourne Stuart (1843-1923) wikidata:Q5481096", use_column_width=True)
+
 #######################
 #       Side Bar      #
 #######################
 st.sidebar.title('Select the parameters to analyze survival prediction')
-image = os.path.join(dirname, '../assets/RMS_Titanic_3.jpg')
-st.image(image, caption = "RMS Titanic departing Southampton on April 10, 1912. Photographer Francis Godolphin Osbourne Stuart (1843-1923) wikidata:Q5481096", use_column_width=True)
 Age = st.sidebar.slider("Enter your Age", 1, 65, 30)
 Fare = st.sidebar.slider("Fare (in 1992)", 1, 66, 32)
 relatives = st.sidebar.selectbox("How many relatives are traveling with you?", range(0,6))
